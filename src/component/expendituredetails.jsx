@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+axios.defaults.withCredentials = true;
+const client = axios.create({
+  baseURL: "http://127.0.0.1:8000"
+});
+
 const ExpenditureDetails = () => {
   const [expenditureData, setExpenditureData] = useState([]);
 
@@ -40,25 +47,64 @@ const ExpenditureDetails = () => {
   }
 
   return (
-    <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 bg-white rounded-full gap-x-4 text-gray-800 text-base lg:text-lg'>
-      <h1>Bus Expenditure Details</h1>
+    <div className="overflow-x-auto shadow-md sm:rounded-lg">
+  <table className="w-full text-sm text-left rtl:text-right text-gray-300">
+    <caption className="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+      Bus Expenditure Details
+    </caption>
+    <thead className="text-xs text-gray-300 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" className="px-6 py-3">
+          Monthly Fuel Cost
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Insurance Cost
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Sacco Payment
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Owner Payment
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Driver Payment
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Conductor Payment
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Service Cost
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Service Date
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Last Tyre Replacement
+        </th>
+        <th scope="col" className="px-6 py-3">
+          Next Inspection Date
+        </th>
+      </tr>
+    </thead>
+    <tbody>
       {expenditureData.map((expenditure) => (
-        <div key={expenditureData.bus_id}className='border p-3 bg-neutral-400 ml-9 mr-9 mt-8 mb-8
-        rounded-lg font-bold mt-5 '>
-          <p>Monthly Fuel Cost: {expenditure.monthly_fuel_cost}</p>
-          <p>Insurance Cost: {expenditure.insurance_cost}</p>
-          <p>Sacco Payment: {expenditure.sacco_payment}</p>
-          <p>Owner Payment: {expenditureData.owner_payment}</p>
-          <p>Driver Payment: {expenditure.driver_payment}</p>
-          <p>Conductor Payment: {expenditure.conductor_payment}</p>
-          <p>Service Cost: {expenditure.service_cost}</p>
-          <p>Service Date: {expenditure.service_date}</p>
-          <p>Last Tyre Replacement: {expenditure.last_tyre_replacement}</p>
-          <p>Next Inspection Date: {expenditure.next_inspection_date}</p>
-        </div>
+        <tr key={expenditureData.bus_id}>
+          <td className="border px-6 py-3">{expenditure.monthly_fuel_cost}</td>
+          <td className="border px-6 py-3">{expenditure.insurance_cost}</td>
+          <td className="border px-6 py-3">{expenditure.sacco_payment}</td>
+          <td className="border px-6 py-3">{expenditureData.owner_payment}</td>
+          <td className="border px-6 py-3">{expenditure.driver_payment}</td>
+          <td className="border px-6 py-3">{expenditure.conductor_payment}</td>
+          <td className="border px-6 py-3">{expenditure.service_cost}</td>
+          <td className="border px-6 py-3">{expenditure.service_date}</td>
+          <td className="border px-6 py-3">{expenditure.last_tyre_replacement}</td>
+          <td className="border px-6 py-3">{expenditure.next_inspection_date}</td>
+        </tr>
       ))}
-    </div>
-  );
+    </tbody>
+  </table>
+</div>
+  )
 };
 
 export default ExpenditureDetails;

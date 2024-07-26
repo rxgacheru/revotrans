@@ -1,6 +1,15 @@
 import React from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-const BusExpenditureDetails = ({ expenditureData }) => {
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+axios.defaults.withCredentials = true;
+const client = axios.create({
+  baseURL: "http://127.0.0.1:8000"
+});
+
+const BusExpenditureManager = ({ expenditureData }) => {
   if (!expenditureData) {
     return <div aria-label="Loading..." role="status" class="flex items-center space-x-2">
     <svg class="h-20 w-20 animate-spin stroke-gray-500" viewBox="0 0 256 256">
@@ -74,4 +83,4 @@ const BusExpenditureDetails = ({ expenditureData }) => {
   );
 };
 
-export default BusExpenditureDetails;
+export default BusExpenditureManager;

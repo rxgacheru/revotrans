@@ -166,6 +166,7 @@ const Register = () => {
 
 export default Register; */
 
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -178,7 +179,7 @@ const client = axios.create({
 });
 
 const Register = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [customUser, setCustomUser] = useState(null);
   const [registrationToggle, setRegistrationToggle] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -186,18 +187,20 @@ const Register = () => {
   const history = useNavigate();
 
   useEffect(() => {
-    client.get("/api/user")
-     .then(function (res) {
-        setCurrentUser(res.data);
-      })
-     .catch(function (error) {
-        setCurrentUser(false);
-      });
-  }, []);
-
-  const setEmailValue = (value) => {
-    setEmail(value);
-  };
+    const fetchUsers = async () => {
+      try {
+        const response = await client.get("/api/users/");
+        setCustomUser(response.data);
+      } catch (error) {
+        if (error.response.status === 401) {
+          history.push('/login');
+        } else {
+          console.error('Error fetching users:', error);
+        }
+      }
+    };
+    fetchUsers();
+  }, [history]);
 
   const setPasswordValue = (value) => {
     setPassword(value);
@@ -214,43 +217,36 @@ const Register = () => {
   const submitRegistration = (e) => {
     e.preventDefault();
     client.post(
-      "/api/register/",
+      "/api/users/",
       {
         email: email,
         username: username,
         password: password,
       }
     ).then(function (res) {
-      client.post(
-        "/api/login",
-        {
-          email: email,
-          password: password,
-        }
-      ).then(function (res) {
-        setCurrentUser(true);
-        history.push('/'); // redirect to homepage
-      });
+
+      history.push('/component/Home');
     });
   };
+  
 
   const submitLogin = (e) => {
     e.preventDefault();
     client.post(
-      "/api/login",
+      "/api/users",
       {
         email: email,
         password: password
       }
     ).then(function (res) {
-      setCurrentUser(true);
-      history.push('/'); // redirect to homepage
+      history.push('/component/Home');
+
     }).catch(function (error) {
-      setCurrentUser(false);
+
       console.error('Error logging in:', error);
     });
-  };  
-
+  };
+  
   const submitLogout = (e) => {
     e.preventDefault();
     client.post(
@@ -258,50 +254,104 @@ const Register = () => {
       null,
       { withCredentials: true }
     ).then(function (res) {
-      setCurrentUser(false);
-      history.push('/login'); // redirect to login page
+      setCusomUser(false);
+      history.push('/component/login'); 
     }).catch(function (error) {
       console.error('Error logging out:', error);
     });
   };
 
   return (
-    <div>
-      {currentUser? (
-        <div>
-          <h1>Welcome, {username}!</h1>
-          <button onClick={submitLogout}>Logout</button>
-        </div>
-      ) : (
-        <div>
-          {registrationToggle? (
-            <form onSubmit={submitRegistration}>
-              <label>Email:</label>
-              <input type="email" value={email} onChange={(e) => setEmailValue(e.target.value)} />
-              <br />
-              <label>Username:</label>
-              <input type="text" value={username} onChange={(e) => setUsernameValue(e.target.value)} />
-              <br />
-              <label>Password:</label>
-              <input type="password" value={password} onChange={(e) => setPasswordValue(e.target.value)} />
-              <br />
-              <button type="submit">Register</button>
+    <div action="http://127.0.0.1:8000/api/users">
+  {customUser ? (
+    <div className="flex flex-col items-center mx-auto md:h-screen lg:py-0">
+      <h1 className="text-2xl font-bold mb-4">Welcome, {username}!</h1>
+      <button 
+        onClick={submitLogout} 
+        className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+        Logout
+      </button>
+    </div>
+  ) : (
+    <div className=" p-6 min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-md rounded-lg shadow-md backdrop-filter backdrop-blur-lg ">
+        <div className="p-8 space-y-6">
+          <h1 className="text-2xl font-bold leading-tight text-center text-gray-500 dark:text-white">Welcome!</h1>
+          {registrationToggle ? (
+            <form className="text-white space-y-6" onSubmit={submitRegistration} action="http://127.0.0.1:8000/api/users">
+              <div>
+                <label className="block mb-2 text-sm font-medium ">Email:</label>
+                <input 
+                  className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
+                  type="email" 
+                  value={email} 
+                  onChange={(e) => setEmail(e.target.value)} 
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium ">Username:</label>
+                <input 
+                  className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
+                  type="text" 
+                  value={username} 
+                  onChange={(e) => setUsername(e.target.value)} 
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium ">Password:</label>
+                <input 
+                  className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
+                  type="password" 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                />
+              </div>
+              <div className='flex flex-col items-center'>
+              <button 
+                className=" relative inline-flex items-center justify-center p-0.5 overflow-hidden   focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
+                Register
+              </button></div>
             </form>
           ) : (
-            <form onSubmit={submitLogin}>
-              <label>Email:</label>
-              <input type="email" value={email} onChange={(e) => setEmailValue(e.target.value)} />
-              <br />
-              <label>Password:</label>
-              <input type="password" value={password} onChange={(e) => setPasswordValue(e.target.value)} />
-              <br />
-              <button type="submit">Login</button>
-              <button onClick={update_form_btn}>Register</button>
+            <form onSubmit={submitLogin} action="http://127.0.0.1:8000/api/users">
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Email:</label>
+                <input 
+                  className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
+                  type="email" 
+                  value={email} 
+                  onChange={(e) => setEmail(e.target.value)} 
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Password:</label>
+                <input 
+                  className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
+                  type="password" 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                />
+              </div>
+              <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 items-center justify-center mt-4">
+              <button 
+                className=" relative inline-flex items-center justify-center p-0.5 overflow-hidden   focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900" >
+                Login
+              </button>
+              <button 
+                className=" relative inline-flex items-center justify-center p-0.5 overflow-hidden   focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+                type="submit"
+                onClick={update_form_btn} 
+                type="button">
+                Want to Register?
+              </button></div>
             </form>
           )}
         </div>
-      )}
+      </div>
     </div>
+  )}
+</div>
+
   );
 };
 
