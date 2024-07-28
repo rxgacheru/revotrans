@@ -40,22 +40,22 @@ const Expenditure = () => {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 p-4 w-full md:w-1/2 mx-auto">
-  <div className="flex flex-col items-center">
-    <div className="w-full rounded-lg shadow-md dark:border dark:border-gray-700">
+    <section className="p-4 w-full md:w-1/2 mx-auto">
+  <div className="flex flex-col items-center backdrop-filter backdrop-blur-lg  mx-auto md:h-screen lg:py-0 ">
+    <div className="w-full rounded-lg shadow-md md:mt-0 sm:max-w-md xl:p-0  ">
       <div className="p-6 md:p-8 space-y-4 md:space-y-6">
-        <h1 className="text-xl md:text-2xl font-bold leading-tight text-gray-500 text-center">
+        <h1 className="text-xl md:text-2xl font-bold leading-tight text-white text-center">
           Welcome!
         </h1>
-        <form onSubmit={handleSubmit} action="http://127.0.0.1:8000/api/bus-expenditures/">
+        <form  action="http://127.0.0.1:8000/api/bus-expenditures/">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="monthly_fuel_cost" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="monthly_fuel_cost" className="block mb-2 text-sm font-medium text-white">
                 Monthly Fuel Cost:
               </label>
               <input
                 id="monthly_fuel_cost"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="number"
                 name="monthly_fuel_cost"
                 value={expenditureData.monthly_fuel_cost}
@@ -63,12 +63,12 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="insurance_cost" className="block mb-2 text-sm font-medium text-gray300">
+              <label htmlFor="insurance_cost" className="block mb-2 text-sm font-medium text-white">
                 Insurance Cost:
               </label>
               <input
                 id="insurance_cost"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="number"
                 name="insurance_cost"
                 value={expenditureData.insurance_cost}
@@ -76,12 +76,12 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="sacco_payment" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="sacco_payment" className="block mb-2 text-sm font-medium text-white">
                 Sacco Payment:
               </label>
               <input
                 id="sacco_payment"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="number"
                 name="sacco_payment"
                 value={expenditureData.sacco_payment}
@@ -89,12 +89,12 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="owner_payment" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="owner_payment" className="block mb-2 text-sm font-medium text-white">
                 Owner Payment:
               </label>
               <input
                 id="owner_payment"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="number"
                 name="owner_payment"
                 value={expenditureData.owner_payment}
@@ -102,12 +102,12 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="driver_payment" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="driver_payment" className="block mb-2 text-sm font-medium text-white">
                 Driver Payment:
               </label>
               <input
                 id="driver_payment"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="number"
                 name="driver_payment"
                 value={expenditureData.driver_payment}
@@ -115,12 +115,12 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="conductor_payment" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="conductor_payment" className="block mb-2 text-sm font-medium text-white">
                 Conductor Payment:
               </label>
               <input
                 id="conductor_payment"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="number"
                 name="conductor_payment"
                 value={expenditureData.conductor_payment}
@@ -128,12 +128,12 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="service_cost" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="service_cost" className="block mb-2 text-sm font-medium text-white">
                 Service Cost:
               </label>
               <input
                 id="service_cost"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="number"
                 name="service_cost"
                 value={expenditureData.service_cost}
@@ -141,12 +141,12 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="service_date" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="service_date" className="block mb-2 text-sm font-medium text-white">
                 Service Date:
               </label>
               <input
                 id="service_date"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="date"
                 name="service_date"
                 value={expenditureData.service_date}
@@ -154,12 +154,12 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="last_tyre_replacement" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="last_tyre_replacement" className="block mb-2 text-sm font-medium text-white">
                 Last Tyre Replacement:
               </label>
               <input
                 id="last_tyre_replacement"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="date"
                 name="last_tyre_replacement"
                 value={expenditureData.last_tyre_replacement}
@@ -167,21 +167,22 @@ const Expenditure = () => {
               />
             </div>
             <div>
-              <label htmlFor="next_inspection_date" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="next_inspection_date" className="block mb-2 text-sm font-medium text-white">
                 Next Inspection Date:
               </label>
               <input
                 id="next_inspection_date"
-                className="input-style"
+                className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="date"
                 name="next_inspection_date"
                 value={expenditureData.next_inspection_date}
                 onChange={handleChange}
               />
             </div>
+            
           </div>
-          <div className="flex flex-col items-center">
-          <button onClick={handleSubmit} type="submit" className="relative inline-flex items-center justify-center p-0.5 mb-2 me-8 px- overflow-hidden   text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-900 to-blue-300 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 font-large rounded-full text-sm text-center ml-20 text-2xl my-7 font-bold" ><span class="relative px-12 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">Submit</span></button>
+          <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 items-center justify-center mt-4">
+          <button onClick={handleSubmit} type="submit" className=" relative inline-flex items-center justify-center p-0.5 overflow-hidden   focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Submit</button>
           </div>
         </form>
       </div>

@@ -21,17 +21,19 @@ import './App.css';
 import UserList from './component/users';
 import ContactForm from './component/Contact';
 import BusExpenditureManager from './component/management';
-import Sidebar from './component/Sidebar';
 import Explore from './component/Explore';
 import Background from './component/Background/Background';
 import Navbar from './component/Navbar/Navbar';
 import Bus from './component/BusDetail';
 import About from './component/About';
+import SignIn from './component/login';
+import Sidebar from './component/Sidebar';
+
 
 let heroData = [
-  { textOne: 'Revo', textTwo: 'Trans', image: 'bus.jpg' },
-  { textOne: 'Reliable', textTwo: 'Trustworthy', image: 'bus2.jpg' },
-  { textOne: 'Book', textTwo: 'Today', image: 'booking.webp' },
+  { textOne: 'Revo', textTwo: 'Trans', image: 'bus3.jpg' },
+  { textOne: 'Reliable', textTwo: 'Trustworthy', image: 'bus3.jpg' },
+  { textOne: 'Book', textTwo: 'Today', image: 'bus3.jpg' },
 ];
 
 const App = () => {
@@ -47,6 +49,7 @@ const App = () => {
 
   return (
     <Router>
+
             <Background playStatus={playStatus} heroCount={heroCount} />
             <Navbar />
             
@@ -54,12 +57,13 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/component/register" element={<Register />} />
               <Route path='/component/home' element={<Home />} />
-              <Route path='/component/login' element={<Login />} />
+              <Route path='/component/login' element={<SignIn />} />
               <Route path='/component/logout' element={<Logout />} />
               <Route path='/component/passwordreset' element={<Passwordresest />} />
               <Route path='/component/booking' element={<Booking />} />
               <Route path='/component/bookingdetails' element={<BookingDetails />} />
               <Route path='/component/bus' element={<BusForm />} />
+              <Route path='/component/Sidebar' element={<Sidebar />} />
               <Route path='/component/buslist' element={<BusesDetails />} />
               <Route path='/component/expenditure' element={<Expenditure />} />
               <Route path='/component/expendituredetails' element={<ExpenditureDetails />} />
@@ -73,11 +77,14 @@ const App = () => {
               <Route path='/component/management' element={<BusExpenditureManager />} /> 
               <Route path="/component/Explore" element={<Explore />} />
               <Route path="/bus/:id" element={<Bus />} />
+
               
-              <Route path='/component/Sidebar' element={<Sidebar />} />  
+
+ 
 
             </Routes>
             <Footer />
+           
     </Router>
   )
 }

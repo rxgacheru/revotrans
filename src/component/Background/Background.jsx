@@ -2,7 +2,7 @@ import React from 'react';
 import "./Background.css"
 import video1 from '../../assets/video1.mp4';
 import bus3 from '../../assets/bus3.jpg';
-import booking from '../../assets/booking.webp';
+import booking from '../../assets/booking.jpg';
 
 import bus2 from '../../assets/bus2.jpg';
 

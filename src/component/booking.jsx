@@ -62,7 +62,7 @@ const BookingForm = () => {
   return (
     <div className=" pt-4 ">
       <div className="ml-8 text-white ">
-          <div className="flex flex-col items-center mx-auto md:h-screen  ">
+          <div className="flex flex-col items-center mx-auto md:h-screen mb-48  ">
             <div className="w-full backdrop-filter backdrop-blur-lg rounded-lg shadow  md:mt-0 sm:max-w-xl xl:p-0  ">
               <div className="p-6 space-y-4 md:space-y-6">
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl text-center">
@@ -121,7 +121,7 @@ const BookingForm = () => {
       </div>
       {submitSuccess && <p>Booking created successfully!</p>}
       <div className='flex flex-col items-center'>
-      <button type="submit" onClick={handleSubmit} className="relative inline-flex items-center justify-center p-0.5 mb-2 me-8 px- overflow-hidden text-white rounded-lg group bg-gradient-to-br from-cyan-900 to-blue-300 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 font-large rounded-full text-sm text-center  text-2xl my-7 font-bold">
+      <button type="submit" className="relative inline-flex items-center justify-center p-0.5 mb-2 me-8 px- overflow-hidden text-white rounded-lg group bg-gradient-to-br from-cyan-900 to-blue-300 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 font-large rounded-full text-sm text-center  text-2xl my-7 font-bold" onSubmit={handleSubmit}>
       <span class="relative px-12 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
         Submit Booking
       </span>

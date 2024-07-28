@@ -45,11 +45,12 @@ const Explore = () => {
   return (
     <div className="ml-4 mr-4 grid grid-cols-3 gap-4 ">
   {bus.map((bus) => (
-    <div key={bus.bus_id} className="backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md text-white">
+    <div key={bus.bus_id} className="backdrop-filter backdrop-blur-3xl rounded-lg p-4 shadow-md text-white">
       <h2 className="text-xl font-bold mb-2">Bus ID: {bus.bus_id}</h2>
       <ul>
       <li>
       <Link to={`/bus/${bus.id}`} state={bus}>
+      src/assetsbus4.jpg
        <img src="src/assets/bus4.jpeg" alt={bus.bus_reg} className="w-24 h-24 rounded-lg"/>
       </Link>
       </li>
@@ -71,10 +72,10 @@ const Explore = () => {
       </ul>
       <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 items-center justify-center">
       <a href="/component/booking">
-      <button className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-3 me-2 mb-2 dark:focus:ring-yellow-900'>Book Bus: {bus.bus_id}</button>
+      <button className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-3 me-2 mb-2 dark:focus:ring-yellow-900'>Rent Bus: {bus.bus_id}</button>
      </a>
      <Link to={`/bus/${bus.id}`} state={bus}>
-      <button className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-3 me-2 mb-2 dark:focus:ring-yellow-900'>View More</button></Link>
+      <button className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-3 me-2 mb-2 dark:focus:ring-yellow-900'>More Info</button></Link>
      </div>
     </div>
   ))}

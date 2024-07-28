@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMTI1MTYxLCJpYXQiOjE3MjIxMjQ4NjEsImp0aSI6Ijk2ZTM0OTI5NWU1NjRlZWM5ODM2MmExMWFlNDA4MWIyIiwidXNlcl9pZCI6NH0.VqI1nhf12wYy-AsWeFZLyTYQzgtEzuByNiWXqKTkTRk";
+
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.withCredentials = true;
+
 const client = axios.create({
-  baseURL: "http://127.0.0.1:8000"
+  baseURL: "http://127.0.0.1:8000",
+  headers: {
+    Authorization: `Bearer ${accessToken}`
+  }
 });
 
 const CustomUser = () => {
@@ -20,60 +26,59 @@ const CustomUser = () => {
   useEffect(() => {
     fetchCustomUsers();
   }, []);
-  const authToken = 'itpf yuxl viak jkie';
 
   const fetchCustomUsers = async () => {
     try {
-      const response = await client.get('/api/users/', {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
+      const response = await client.get('/api/users/');
       setCustomUsers(response.data);
     } catch (error) {
-      console.error(error);
+      if (error.response && error.response.status === 401) {
+        console.error("Unauthorized: Check if the token is expired or invalid.");
+      } else {
+        console.error(error);
+      }
     }
   };
 
   const createNewCustomUser = async (newCustomUserData) => {
     try {
-      const response = await client.post('/api/users/', newCustomUserData, {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
+      const response = await client.post('/api/users/', newCustomUserData);
       console.log('New custom user created:', response.data);
       fetchCustomUsers();
     } catch (error) {
-      console.error(error);
+      if (error.response && error.response.status === 401) {
+        console.error("Unauthorized: Check if the token is expired or invalid.");
+      } else {
+        console.error(error);
+      }
     }
   };
 
   const updateCustomUser = async (customUserId, updatedCustomUserData) => {
     try {
-      const response = await client.put(`/api/users/${customUserId}/`, updatedCustomUserData, {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
+      const response = await client.put(`/api/users/${customUserId}/`, updatedCustomUserData);
       console.log('Custom user updated:', response.data);
       fetchCustomUsers();
     } catch (error) {
-      console.error(error);
+      if (error.response && error.response.status === 401) {
+        console.error("Unauthorized: Check if the token is expired or invalid.");
+      } else {
+        console.error(error);
+      }
     }
   };
 
   const deleteCustomUser = async (customUserId) => {
     try {
-      const response = await client.delete(`/api/users/${customUserId}/`, {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
+      const response = await client.delete(`/api/users/${customUserId}/`);
       console.log('Custom user deleted:', response.data);
       fetchCustomUsers();
     } catch (error) {
-      console.error(error);
+      if (error.response && error.response.status === 401) {
+        console.error("Unauthorized: Check if the token is expired or invalid.");
+      } else {
+        console.error(error);
+      }
     }
   };
 
