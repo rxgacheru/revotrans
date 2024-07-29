@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMjM1NjAxLCJpYXQiOjE3MjIyMzUzMDEsImp0aSI6IjY2ZTI4OGQ3NTYwYzRhYTk5MDE4ZWJhZmY0NmZkNGUxIiwidXNlcl9pZCI6MTJ9.g6v_z5XUQWq8q7jRZzNys5wjU1RKuUPb4z-BKrJY0EI";
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMjk3MDMyLCJpYXQiOjE3MjIyMzcwMzIsImp0aSI6IjU1NDY4YjY0YWExZDRhNTM4M2U4ZWM2OGRjM2VlMmRiIiwidXNlcl9pZCI6MTJ9.xkuK5J1J5gyPAHen_tBX4iu6jdjbTPnVn4fDSA4NlSU";
 
 const client = axios.create({
   baseURL: "http://127.0.0.1:8000/api/",

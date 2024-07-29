@@ -2,13 +2,14 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMjM1NjAxLCJpYXQiOjE3MjIyMzUzMDEsImp0aSI6IjY2ZTI4OGQ3NTYwYzRhYTk5MDE4ZWJhZmY0NmZkNGUxIiwidXNlcl9pZCI6MTJ9.g6v_z5XUQWq8q7jRZzNys5wjU1RKuUPb4z-BKrJY0EI";
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMjk3MDMyLCJpYXQiOjE3MjIyMzcwMzIsImp0aSI6IjU1NDY4YjY0YWExZDRhNTM4M2U4ZWM2OGRjM2VlMmRiIiwidXNlcl9pZCI6MTJ9.xkuK5J1J5gyPAHen_tBX4iu6jdjbTPnVn4fDSA4NlSU";
 const client = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/register/",
+  baseURL: "http://127.0.0.1:8000/api/users/",
   headers: {
     'Authorization': `Bearer ${accessToken}`
   }
 })
+
 const Register = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -18,7 +19,7 @@ const Register = ({ setIsLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await client.post('users/', { email, username, password });
+      const response = await client.post('/', { email, username, password });
       setEmail('');
       setUsername('');
       setPassword('');
