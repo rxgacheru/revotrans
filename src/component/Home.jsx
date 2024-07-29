@@ -20,6 +20,12 @@ const Home = () => {
             </button>
           </a>
         </div>
+        <a href="/component/Dashboard">
+            <button >
+              
+                DA
+            </button>
+          </a>
       </div>
     </div>
   );

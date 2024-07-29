@@ -19,7 +19,7 @@ const Register = ({ setIsLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await client.post('/', { email, username, password });
+      const response = await client.post('/user-list-create', { email, username, password });
       setEmail('');
       setUsername('');
       setPassword('');

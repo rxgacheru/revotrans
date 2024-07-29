@@ -120,11 +120,9 @@ const BookingForm = () => {
       </div>
       </div>
       {submitSuccess && <p>Booking created successfully!</p>}
-      <div className='flex flex-col items-center'>
-      <button type="submit" className="relative inline-flex items-center justify-center p-0.5 mb-2 me-8 px- overflow-hidden text-white rounded-lg group bg-gradient-to-br from-cyan-900 to-blue-300 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 font-large rounded-full text-sm text-center  text-2xl my-7 font-bold" onSubmit={handleSubmit}>
-      <span class="relative px-12 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+      <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 items-center justify-center">
+      <button type="submit" className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-3 me-2 mb-2 dark:focus:ring-yellow-900' onSubmit={handleSubmit}>
         Submit Booking
-      </span>
         </button></div>
     </form>
     </div>

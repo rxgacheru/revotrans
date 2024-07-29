@@ -48,11 +48,11 @@ const ExpenditureDetails = () => {
 
   return (
     <div className="overflow-x-auto shadow-md sm:rounded-lg">
-  <table className="w-full text-sm text-left rtl:text-right text-gray-300">
-    <caption className="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+  <table className="w-full text-sm text-left rtl:text-right text-white backdrop-filter backdrop-blur-lg">
+    <caption className="p-5 text-lg font-semibold text-left rtl:text-right text-white dark:text-white backdrop-filter backdrop-blur-lg  ">
       Bus Expenditure Details
     </caption>
-    <thead className="text-xs text-gray-300 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <thead className="text-xs text-gray-300 uppercase  dark:text-white">
       <tr>
         <th scope="col" className="px-6 py-3">
           Monthly Fuel Cost

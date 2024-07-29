@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from './Sidebar';
 
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMTc1OTA3LCJpYXQiOjE3MjIxNzU2MDcsImp0aSI6Ijk3OGU0MTc5NDJhMjRlMjFhMjM1NGJlZmE2MTdjNmU1IiwidXNlcl9pZCI6Nn0.2dK-VVYpRGGOaNIEkxX-HQoFxDnY5w2UjC7DpMw5Qv4";
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMjk3MDMyLCJpYXQiOjE3MjIyMzcwMzIsImp0aSI6IjU1NDY4YjY0YWExZDRhNTM4M2U4ZWM2OGRjM2VlMmRiIiwidXNlcl9pZCI6MTJ9.xkuK5J1J5gyPAHen_tBX4iu6jdjbTPnVn4fDSA4NlSU";
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -105,7 +105,7 @@ const CustomUser = () => {
               <td className="py-3 px-6 text-left">{customUser.role}</td>
               <td className="py-3 px-6 text-center">
                 <button className="bg-red-500 text-white px-2 py-1 rounded" onClick={() => deleteCustomUser(customUser.id)}>Delete</button>
-                <button className="bg-green-500 text-white px-2 py-1 rounded" onClick={() => updateCustomUser(customUser.id, { ...customUser })}>Edit</button>
+                <button className="ml-2 bg-green-500 text-white px-2 py-1 rounded" onClick={() => updateCustomUser(customUser.id, { ...customUser })}>Edit</button>
               </td>
             </tr>
           ))}
@@ -146,7 +146,7 @@ const CustomUser = () => {
           onChange={(e) => setNewCustomUserData({...newCustomUserData, role: e.target.value })}
           className="w-full px-3 py-2 border border-gray-300 rounded"
         />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded ">Add</button>
       </form>
     </div>
     

@@ -76,13 +76,11 @@ const BusesDetails = () => {
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Bus Manufacture</th>
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Bus Value</th>
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Bus Capacity</th>
-          <th className="border text-sm font-medium text-gray-500 dark:text-white">Owner Identification</th>
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Owner Contact</th>
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Bus Driver</th>
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Driver Contact</th>
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Bus Conductor</th>
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Conductor contact</th>
-          <th className="border text-sm font-medium text-gray-500 dark:text-white">Conductor Identification</th>
           <th className="border text-sm font-medium text-gray-500 dark:text-white">Actions</th>
         </tr>
       </thead>
