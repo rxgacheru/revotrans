@@ -26,7 +26,6 @@ import Background from './component/Background/Background';
 import Navbar from './component/Navbar/Navbar';
 import Bus from './component/BusDetail';
 import About from './component/About';
-import SignIn from './component/login';
 import Sidebar from './component/Sidebar';
 
 
@@ -57,7 +56,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/component/register" element={<Register />} />
               <Route path='/component/home' element={<Home />} />
-              <Route path='/component/login' element={<SignIn />} />
+              <Route path='/component/login' element={<Login />} />
               <Route path='/component/logout' element={<Logout />} />
               <Route path='/component/passwordreset' element={<Passwordresest />} />
               <Route path='/component/booking' element={<Booking />} />

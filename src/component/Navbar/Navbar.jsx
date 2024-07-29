@@ -2,7 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import "./Navbar.css"
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
   return (
     <div className="nav">
       <div className="nav-logo">RevoTrans</div>
@@ -15,6 +18,15 @@ const Navbar = () => {
         </li>
         <li><Link to='/component/Contact' >Contact</Link>
         </li>
+        {isLoggedIn ? (
+            <>
+            <li><button onClick={handleLogout}>Sign Out</button></li>
+            </>
+        ) : (
+          <>
+            <li><Link to='/component/Login'>Sign In</Link></li>
+          </>
+          )}
       </ul>
     </div>
   );

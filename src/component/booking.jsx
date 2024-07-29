@@ -68,7 +68,7 @@ const BookingForm = () => {
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl text-center">
                   Booking A Bus
                 </h1>
-    <form onSubmit={handleSubmit} action='http://127.0.0.1:8000/api/bookings/' className="space-y-4 md:space-y-6">
+    <form onSubmit={handleSubmit}  className="space-y-4 md:space-y-6">
       <div className='flex'>
       <div className='w-1/2 mr-5'>
         <label htmlFor="booking_date" className="block mb-2 text-sm font-medium text-white">Date:</label>

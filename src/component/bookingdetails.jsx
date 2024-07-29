@@ -28,6 +28,7 @@ const BookingDetails = ({ bookingId }) => {
   if (!booking) {
     return (
       <div aria-label="Loading..." role="status" className="flex items-center space-x-2">
+        
         <svg className="h-20 w-20 animate-spin stroke-gray-500" viewBox="0 0 256 256">
          
         </svg>
@@ -37,6 +38,7 @@ const BookingDetails = ({ bookingId }) => {
   }
 
   return (
+    
     <table className=' backdrop-filter backdrop-blur-lg grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 rounded-full gap-x-4 text-gray-800 text-base lg:text-lg text-white'>
       <thead>
         <tr>

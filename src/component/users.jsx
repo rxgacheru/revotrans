@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Sidebar from './Sidebar';
 
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMTI1MTYxLCJpYXQiOjE3MjIxMjQ4NjEsImp0aSI6Ijk2ZTM0OTI5NWU1NjRlZWM5ODM2MmExMWFlNDA4MWIyIiwidXNlcl9pZCI6NH0.VqI1nhf12wYy-AsWeFZLyTYQzgtEzuByNiWXqKTkTRk";
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMTc1OTA3LCJpYXQiOjE3MjIxNzU2MDcsImp0aSI6Ijk3OGU0MTc5NDJhMjRlMjFhMjM1NGJlZmE2MTdjNmU1IiwidXNlcl9pZCI6Nn0.2dK-VVYpRGGOaNIEkxX-HQoFxDnY5w2UjC7DpMw5Qv4";
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -83,9 +84,9 @@ const CustomUser = () => {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 p-4">
+    <div className="backdrop-filter backdrop-blur-lg ml-2 mr-2 p-4">
       <h1 className="text-2xl font-bold mb-4">Custom User List</h1>
-      <table className="w-full table-auto">
+      <table className=" w-full table-auto">
         <thead>
           <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
             <th className="py-3 px-6 text-left">ID</th>
@@ -148,6 +149,7 @@ const CustomUser = () => {
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
       </form>
     </div>
+    
   );
 };
 
