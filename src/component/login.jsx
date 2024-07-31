@@ -1,38 +1,66 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNDcxNjcyLCJpYXQiOjE3MjI0MTE2NzIsImp0aSI6IjNiNTcxYWE1YTE0MjQ4OWQ5YmM5ZDU0NTQzNjJkOWZlIiwidXNlcl9pZCI6MTN9.Cs9oJ-R0UwwmfhnWWRZ70RCVAWE2BaGhXlFYKS774RM";
-
 
 const client = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
+  baseURL: "http://127.0.0.1:8000/",
   headers: {
-    'Authorization': `Bearer ${accessToken}`
+    'Content-Type': 'application/json',
   }
 });
+
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNDcxNjcyLCJpYXQiOjE3MjI0MTE2NzIsImp0aSI6IjNiNTcxYWE1YTE0MjQ4OWQ5YmM5ZDU0NTQzNjJkOWZlIiwidXNlcl9pZCI6MTN9.Cs9oJ-R0UwwmfhnWWRZ70RCVAWE2BaGhXlFYKS774RM"; 
 
 const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(''); 
+  
     try {
-      const response = await client.post('login/', { email, password });
-      if (response.status === 200 && response.data.access && response.data.refresh) {
-        setEmail('');
-        setPassword('');
-        setIsLoggedIn(true);  
-        navigate('/'); 
+      const payload = { email, password };
+      console.log('Submitting payload:', payload);
+  
+      const response = await axios.post('http://127.0.0.1:8000/api/login/', payload, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      console.log('Response:', response);
+      setEmail('');
+      setPassword('');
+  
+      if (response.status === 200) {
+        if (typeof setIsLoggedIn === 'function') {
+          setIsLoggedIn(true);
+        } else {
+          console.error('setIsLoggedIn is not a function');
+        }
+        console.log('Navigating to homepage');
+        navigate('/');
       } else {
-        console.error('Login failed:', response.data);
+        console.error('Login failed with status:', response.status);
       }
     } catch (error) {
-      console.error("There was an error submitting the form!", error);
+      console.error('There was an error submitting the form:', error);
+  
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+        setError('Invalid email or password.'); 
+      } else if (error.request) {
+        console.error('Error request data:', error.request);
+      } else {
+        console.error('Error message:', error.message);
+      }
     }
   };
-
+  
   return (
     <div className="p-6 min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md rounded-lg shadow-md backdrop-filter backdrop-blur-lg">
@@ -46,6 +74,7 @@ const Login = ({ setIsLoggedIn }) => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -55,8 +84,10 @@ const Login = ({ setIsLoggedIn }) => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
+            {error && <p className="text-red-500 text-center">{error}</p>}
             <div className='flex flex-col items-center'>
               <button 
                 className="relative inline-flex items-center justify-center p-0.5 overflow-hidden focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"

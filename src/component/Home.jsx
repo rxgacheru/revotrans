@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Home = ({ isLoggedIn }) => {
+const Home = ({ isLoggedIn, username }) => {
   return (
     <div className="flex items-center mb-40 px-8">
       <div className="mt-16 lg:mt-28 ml-28 mr-28 items-center justify-center">
         <h1 className="font-bold text-5xl mb-6 text-white text-center">Travel With RevoTrans</h1>
+        {isLoggedIn && username && (
+          <h2 className="text-3xl mb-6 text-white text-center">
+            Welcome back, {username}!
+          </h2>
+        )}
         <p className="text-xl mb-8 text-white text-center">
           RevoTrans is the go-to destination for SACCO companies to manage their buses, drivers, and bus routes. RevoTrans also enables travelers to book. It boasts the largest bus community globally.
         </p>

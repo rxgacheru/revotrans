@@ -38,6 +38,7 @@ let heroData = [
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
   const [heroCount, setHeroCount] = useState(2);
   const [playStatus, setPlayStatus] = useState(false);
 
@@ -55,10 +56,10 @@ const App = () => {
             <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             
             <Routes>
-              <Route path="/" element={<Home isLoggedIn={isLoggedIn}/>} />
+              <Route path="/" element={<Home isLoggedIn={isLoggedIn} username={username} />} />
               <Route path="/component/register" element={<Register  setIsLoggedIn={setIsLoggedIn} />} />
               <Route path='/component/home' element={<Home />} />
-              <Route path='/component/login' element={<Login />} />
+              <Route path='/component/login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
               <Route path='/component/logout' element={<Logout />} />
               <Route path='/component/passwordreset' element={<Passwordresest />} />
               <Route path='/component/booking' element={<Booking />} />
