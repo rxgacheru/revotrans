@@ -39,7 +39,7 @@ const BookingForm = () => {
         booking_status: '',
         booking_fare: '',
         booking_payment: '',
-        booking_cancellation: '',
+        booking_email: '', 
       });
     } catch (error) {
       if (error.response) {
@@ -115,8 +115,16 @@ const BookingForm = () => {
         <input type="text" id="booking_payment" name="booking_payment" value={formData.booking_payment} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
       </div>
       <div className='w-1/2'>
-        <label htmlFor="booking_cancellation" className="block mb-2 text-sm font-medium text-white">Cancellation:</label>
-        <input type="date" id="booking_cancellation" name="booking_cancellation" value={formData.booking_cancellation} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+      <label htmlFor="booking_email" className="block mb-2 text-sm font-medium text-white">Email:</label>
+    <input
+      type="email"
+      id="booking_email"
+      name="booking_email"
+      value={formData.booking_email}
+      onChange={handleChange}
+      className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      required
+    />
       </div>
       </div>
       {submitSuccess && <p>Booking created successfully!</p>}
@@ -130,8 +138,7 @@ const BookingForm = () => {
     </div>
     
     </div>
-    {/*<div className='w-1/2 h-9 ml-12 mt-4 mb-5 mt-24'>
-    <img src='src\assets\revotrans-bus2.jpg' className='mx-auto object-contain md:object-scale-down flex h-auto max-w-lg mt-20 md:grid-cols-2 rounded-lg' /></div>*/}
+    
     </div>
   );
 };
