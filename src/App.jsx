@@ -27,6 +27,7 @@ import Navbar from './component/Navbar/Navbar';
 import Bus from './component/BusDetail';
 import About from './component/About';
 import Sidebar from './component/Sidebar';
+import Prop from './component/Prop';
 
 
 let heroData = [
@@ -36,6 +37,7 @@ let heroData = [
 ];
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [heroCount, setHeroCount] = useState(2);
   const [playStatus, setPlayStatus] = useState(false);
 
@@ -50,11 +52,11 @@ const App = () => {
     <Router>
 
             <Background playStatus={playStatus} heroCount={heroCount} />
-            <Navbar />
+            <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/component/register" element={<Register />} />
+              <Route path="/" element={<Home isLoggedIn={isLoggedIn}/>} />
+              <Route path="/component/register" element={<Register  setIsLoggedIn={setIsLoggedIn} />} />
               <Route path='/component/home' element={<Home />} />
               <Route path='/component/login' element={<Login />} />
               <Route path='/component/logout' element={<Logout />} />
@@ -76,6 +78,7 @@ const App = () => {
               <Route path='/component/management' element={<BusExpenditureManager />} /> 
               <Route path="/component/Explore" element={<Explore />} />
               <Route path="/bus/:id" element={<Bus />} />
+              <Route path='/component/Prop' element={<Prop />} />
 
               
 

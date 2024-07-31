@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMjk3MDMyLCJpYXQiOjE3MjIyMzcwMzIsImp0aSI6IjU1NDY4YjY0YWExZDRhNTM4M2U4ZWM2OGRjM2VlMmRiIiwidXNlcl9pZCI6MTJ9.xkuK5J1J5gyPAHen_tBX4iu6jdjbTPnVn4fDSA4NlSU";
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNDcxNjcyLCJpYXQiOjE3MjI0MTE2NzIsImp0aSI6IjNiNTcxYWE1YTE0MjQ4OWQ5YmM5ZDU0NTQzNjJkOWZlIiwidXNlcl9pZCI6MTN9.Cs9oJ-R0UwwmfhnWWRZ70RCVAWE2BaGhXlFYKS774RM"; 
 const client = axios.create({
   baseURL: "http://127.0.0.1:8000/api/users/",
   headers: {
-    'Authorization': `Bearer ${accessToken}`
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
   }
-})
+});
 
 const Register = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
@@ -19,14 +20,31 @@ const Register = ({ setIsLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await client.post('/user-list-create', { email, username, password });
+      const payload = { email, username, password };
+      console.log('Submitting payload:', payload);
+      const response = await client.post('/', payload);
+      console.log('Response:', response);
       setEmail('');
       setUsername('');
       setPassword('');
-      setIsLoggedIn(true); 
-      navigate('/Home');  
+      if (typeof setIsLoggedIn === 'function') {
+        setIsLoggedIn(true);
+      } else {
+        console.error('setIsLoggedIn is not a function');
+      }
+      console.log('Navigating to homepage');
+      navigate('/');
     } catch (error) {
-      console.error("There was an error submitting the form!", error);
+      console.error('There was an error submitting the form:', error);
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+        console.error('Error response status:', error.response.status);
+        console.error('Error response headers:', error.response.headers);
+      } else if (error.request) {
+        console.error('Error request data:', error.request);
+      } else {
+        console.error('Error message:', error.message);
+      }
     }
   };
 
@@ -34,7 +52,7 @@ const Register = ({ setIsLoggedIn }) => {
     <div className="p-6 min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md rounded-lg shadow-md backdrop-filter backdrop-blur-lg">
         <div className="p-8 space-y-6">
-          <h1 className="text-2xl font-bold leading-tight text-center text-white dark:text-white">Get Started!</h1>
+          <h1 className="text-2xl font-bold leading-tight text-center text-white dark:text-white">Create  an Account</h1>
           <form className="text-white space-y-6" onSubmit={handleSubmit}>
             <div>
               <label className="block mb-2 text-sm font-medium">Email:</label>
@@ -43,6 +61,7 @@ const Register = ({ setIsLoggedIn }) => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -52,6 +71,7 @@ const Register = ({ setIsLoggedIn }) => {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -61,6 +81,7 @@ const Register = ({ setIsLoggedIn }) => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div className='flex flex-col items-center'>
@@ -73,7 +94,7 @@ const Register = ({ setIsLoggedIn }) => {
             </div>
             <div className="ml-3 text-sm">
               <label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">
-                Back to <a className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="/component/login">SIGN IN</a>
+                Already have an account? <a className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="/component/login">SIGN IN</a>
               </label>
             </div>
           </form>

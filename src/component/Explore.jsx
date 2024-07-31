@@ -50,8 +50,6 @@ const Explore = () => {
       <ul>
       <li>
       <Link to={`/bus/${bus.id}`} state={bus}>
-      src/assetsbus4.jpg
-       <img src="src/assets/bus4.jpeg" alt={bus.bus_reg} className="w-24 h-24 rounded-lg"/>
       </Link>
       </li>
         <li>

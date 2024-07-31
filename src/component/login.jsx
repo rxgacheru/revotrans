@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNDcxNjcyLCJpYXQiOjE3MjI0MTE2NzIsImp0aSI6IjNiNTcxYWE1YTE0MjQ4OWQ5YmM5ZDU0NTQzNjJkOWZlIiwidXNlcl9pZCI6MTN9.Cs9oJ-R0UwwmfhnWWRZ70RCVAWE2BaGhXlFYKS774RM";
 
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMjk3MDMyLCJpYXQiOjE3MjIyMzcwMzIsImp0aSI6IjU1NDY4YjY0YWExZDRhNTM4M2U4ZWM2OGRjM2VlMmRiIiwidXNlcl9pZCI6MTJ9.xkuK5J1J5gyPAHen_tBX4iu6jdjbTPnVn4fDSA4NlSU";
 
 const client = axios.create({
   baseURL: "http://127.0.0.1:8000/api/",
@@ -24,7 +24,7 @@ const Login = ({ setIsLoggedIn }) => {
         setEmail('');
         setPassword('');
         setIsLoggedIn(true);  
-        navigate('/component/Home'); 
+        navigate('/'); 
       } else {
         console.error('Login failed:', response.data);
       }
@@ -38,7 +38,7 @@ const Login = ({ setIsLoggedIn }) => {
       <div className="w-full max-w-md rounded-lg shadow-md backdrop-filter backdrop-blur-lg">
         <div className="p-8 space-y-6">
           <h1 className="text-2xl font-bold leading-tight text-center text-white dark:text-white">Welcome Back!</h1>
-          <form className="text-white space-y-6" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="text-white space-y-6">
             <div>
               <label className="block mb-2 text-sm font-medium">Email:</label>
               <input
@@ -58,7 +58,7 @@ const Login = ({ setIsLoggedIn }) => {
               />
             </div>
             <div className='flex flex-col items-center'>
-              <button
+              <button 
                 className="relative inline-flex items-center justify-center p-0.5 overflow-hidden focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
                 type="submit"
               >

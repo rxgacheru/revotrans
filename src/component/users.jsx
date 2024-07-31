@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from './Sidebar';
 
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMjk3MDMyLCJpYXQiOjE3MjIyMzcwMzIsImp0aSI6IjU1NDY4YjY0YWExZDRhNTM4M2U4ZWM2OGRjM2VlMmRiIiwidXNlcl9pZCI6MTJ9.xkuK5J1J5gyPAHen_tBX4iu6jdjbTPnVn4fDSA4NlSU";
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNDcxNjcyLCJpYXQiOjE3MjI0MTE2NzIsImp0aSI6IjNiNTcxYWE1YTE0MjQ4OWQ5YmM5ZDU0NTQzNjJkOWZlIiwidXNlcl9pZCI6MTN9.Cs9oJ-R0UwwmfhnWWRZ70RCVAWE2BaGhXlFYKS774RM";
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -84,11 +84,11 @@ const CustomUser = () => {
   };
 
   return (
-    <div className="backdrop-filter backdrop-blur-lg ml-2 mr-2 p-4">
+    <div className="text-white backdrop-filter backdrop-blur-lg ml-2 mr-2 p-4">
       <h1 className="text-2xl font-bold mb-4">Custom User List</h1>
       <table className=" w-full table-auto">
         <thead>
-          <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+          <tr className="  uppercase text-sm leading-normal">
             <th className="py-3 px-6 text-left">ID</th>
             <th className="py-3 px-6 text-left">Username</th>
             <th className="py-3 px-6 text-left">Email</th>
@@ -96,7 +96,7 @@ const CustomUser = () => {
             <th className="py-3 px-6 text-center">Actions</th>
           </tr>
         </thead>
-        <tbody className="text-gray-600 text-sm font-light">
+        <tbody className="text-sm font-bold">
           {customUsers.map((customUser) => (
             <tr key={customUser.id} className="border-b border-gray-200 hover:bg-gray-100">
               <td className="py-3 px-6 text-left">{customUser.id}</td>
