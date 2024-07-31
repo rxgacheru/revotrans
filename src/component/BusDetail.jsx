@@ -1,45 +1,39 @@
-import { useLocation } from 'react-router-dom';
-import Review from './reviews';
+// BookingDetails.js
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
+const BookingDetails = () => {
+  const { bookingId } = useParams();
+  const [booking, setBooking] = useState(null);
 
-const Bus = () => {
-  const { state: bus } = useLocation();
+  useEffect(() => {
+    axios.get(`/api/bookings/${bookingId}/`)
+      .then(response => {
+        setBooking(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the booking details!', error);
+      });
+  }, [bookingId]);
+
+  if (!booking) return <div>Loading...</div>;
+
   return (
     <div>
-    <div className='p-4 text-white backdrop-filter backdrop-blur-lg max-w-md mx-auto  shadow-lg rounded-lg overflow-hidden'>
-      <h1 className='text-2xl font-bold mb-5 text-center '>Bus Details</h1>
-      <p className=''><strong>Bus ID:</strong> {bus.id}</p>
-      <p className=''><strong>Bus Registration:</strong> {bus.bus_reg}</p>
-      <p className=''><strong>Bus Manufacture:</strong> {bus.bus_manufacture}</p>
-      <p className=''><strong>Bus Value:</strong> {bus.bus_price}</p>
-      <p className=''><strong>Bus Capacity:</strong> {bus.bus_capacity}</p>
-      <p className=''><strong>Owner Identification:</strong> {bus.bus_owner_identification}</p>
-      <p className=''><strong>Owner Contact:</strong> {bus.bus_owner_contact}</p>
-      <p className=''><strong>Bus Driver:</strong> {bus.bus_driver}</p>
-      <p className=''><strong>Driver Contact:</strong> {bus.bus_driver_contact}</p>
-      <p className=''><strong>Bus Conductor:</strong> {bus.bus_conductor}</p>
-      <p className=''><strong>Conductor Contact:</strong> {bus.bus_conductor_contact}</p>
-      <p className=''><strong>Conductor Identification:</strong> {bus.bus_conductor_identification}</p>
-
-      <div className='mt-4'>
-        <h2 className='text-lg text-white font-bold mb-2'>Reviews</h2>
-        <div className='flex mb-2'>
-          <span className='text-yellow-400'>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-          </span>
-          <span className='ml-2 text-white'>4.5/5</span>
-        </div>
-        <p className=''></p>
-      </div>
-
-    </div>
-    <Review />
+      <h1>Booking Details</h1>
+      <p><strong>ID:</strong> {booking.booking_id}</p>
+      <p><strong>Date:</strong> {booking.booking_date}</p>
+      <p><strong>Time:</strong> {booking.booking_time}</p>
+      <p><strong>Route:</strong> {booking.booking_route}</p>
+      <p><strong>Bus:</strong> {booking.booking_bus}</p>
+      <p><strong>Passenger:</strong> {booking.booking_passenger}</p>
+      <p><strong>Fare:</strong> {booking.booking_fare}</p>
+      <p><strong>Payment:</strong> {booking.booking_payment}</p>
+      <p><strong>Confirmation:</strong> {booking.booking_confirmation}</p>
+      <p><strong>Email:</strong> {booking.booking_email}</p>
     </div>
   );
 };
 
-export default Bus;
+export default BookingDetails;

@@ -24,10 +24,10 @@ const SingleBookingDetails = () => {
   }
 
   return (
-    <div>
-      <h2>Booking Details</h2>
-      <p>ID: {booking.booking_id}</p>
-      <p>Date: {booking.booking_date}</p>
+    <div className='p-4 text-white backdrop-filter backdrop-blur-lg max-w-md mx-auto text-center shadow-lg rounded-lg overflow-hidden'>
+      <h2 className='text-2xl text-center font-bold mb-5 text-center '>Booking Details</h2>
+      <p className='font-bold'>ID: {booking.booking_id}</p>
+      <p >Date: {booking.booking_date}</p>
       <p>Time: {booking.booking_time}</p>
       <p>Route: {booking.booking_route}</p>
       <p>Bus: {booking.booking_bus}</p>

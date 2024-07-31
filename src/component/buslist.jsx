@@ -97,8 +97,8 @@ const BusesDetails = () => {
             <td className="border text-sm font-medium text-gray-500 dark:text-white">{bus.bus_driver_contact}</td>
             <td className="border text-sm text-center font-medium text-gray-500 dark:text-white">{bus.bus_conductor}</td>
             <td className="border text-sm font-medium text-gray-500 dark:text-white">{bus.bus_conductor_contact}</td>
-            <td className="flex justify-center mt-4">
-              <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-8 px- overflow-hidden text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-900 to-blue-300 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 font-large rounded-full text-sm text-center ml-20 text-2xl my-7 font-bold" onClick={() => deleteBus(bus.bus_id)}>
+            <td className="border flex justify-center mt-4">
+              <button className="borderrelative inline-flex items-center justify-center p-0.5 mb-2 me-8 px- overflow-hidden text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-900 to-blue-300 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 font-large rounded-full text-sm text-center ml-20 text-2xl my-7 font-bold" onClick={() => deleteBus(bus.bus_id)}>
                 <span className="relative px-12 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                   Delete
                 </span>

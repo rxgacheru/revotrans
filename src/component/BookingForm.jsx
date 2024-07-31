@@ -62,7 +62,7 @@ const BookingForm = ({ fetchBookings }) => {
       alert('Booking created successfully!');
       fetchBookings();
       setFormData({
-        // reset form data fields
+       
       });
       navigate(`/bookings/${response.data.booking_id}`);
     } catch (error) {
@@ -86,7 +86,7 @@ const BookingForm = ({ fetchBookings }) => {
             <div className="w-full backdrop-filter backdrop-blur-lg rounded-lg shadow  md:mt-0 sm:max-w-xl xl:p-0  ">
               <div className="p-6 space-y-4 md:space-y-6">
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl text-center">
-                  Booking A Bus
+                  Renting Form
                 </h1>
     <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
       <div className='flex'>
@@ -165,7 +165,7 @@ const BookingForm = ({ fetchBookings }) => {
       </div>
       <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 items-center justify-center">
       <button type="submit" className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-3 me-2 mb-2 dark:focus:ring-yellow-900' >
-        Submit Booking
+        Submit
         </button></div>
     </form>
     </div>

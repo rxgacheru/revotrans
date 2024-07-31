@@ -78,8 +78,8 @@ const App = () => {
               <Route path='/component/passwordreset' element={<Passwordresest />} />
                
               <Route path='/component/BookingForm'  element={<BookingForm fetchBookings={fetchBookings} />} />
-              <Route path='/component/bookings' element={<BookingDetails fetchBookings={fetchBookings} bookings={bookings} />} />
-              <Route path='/component/bookings/:id' element={<SingleBookingDetails />} />
+              <Route path='/component/BookingDetails' element={<BookingDetails />} />
+              <Route path='/bookings/:id' element={<SingleBookingDetails />} />
 
               <Route path='/component/bus' element={<BusForm />} />
               <Route path='/component/Sidebar' element={<Sidebar />} />

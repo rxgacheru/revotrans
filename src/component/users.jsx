@@ -85,26 +85,26 @@ const CustomUser = () => {
 
   return (
     <div className="text-white backdrop-filter backdrop-blur-lg ml-2 mr-2 p-4">
-      <h1 className="text-2xl font-bold mb-4">Custom User List</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Custom User List</h1>
       <table className=" w-full table-auto">
-        <thead>
-          <tr className="  uppercase text-sm leading-normal">
-            <th className="py-3 px-6 text-left">ID</th>
-            <th className="py-3 px-6 text-left">Username</th>
-            <th className="py-3 px-6 text-left">Email</th>
-            <th className="py-3 px-6 text-left">Role</th>
-            <th className="py-3 px-6 text-center">Actions</th>
+        <thead className='text-center border'>
+          <tr className="text-center border uppercase text-sm leading-normal">
+            <th className="py-3 px-6  border">ID</th>
+            <th className="py-3 px-6 border">Username</th>
+            <th className="py-3 px-6 border">Email</th>
+            <th className="py-3 px-6 border">Role</th>
+            <th className="py-3 px-6 text-center border">Actions</th>
           </tr>
         </thead>
-        <tbody className="text-sm font-bold">
+        <tbody className="border text-sm font-bold border">
           {customUsers.map((customUser) => (
-            <tr key={customUser.id} className="border-b border-gray-200 hover:bg-gray-100">
-              <td className="py-3 px-6 text-left">{customUser.id}</td>
-              <td className="py-3 px-6 text-left">{customUser.username}</td>
-              <td className="py-3 px-6 text-left">{customUser.email}</td>
-              <td className="py-3 px-6 text-left">{customUser.role}</td>
+            <tr key={customUser.id} className="border-b border-gray-200 hover:bg-gray-800 border">
+              <td className="py-3 px-6 text-left border">{customUser.id}</td>
+              <td className="py-3 px-6 text-left border">{customUser.username}</td>
+              <td className="py-3 px-6 text-left border">{customUser.email}</td>
+              <td className="py-3 px-6 text-left border">{customUser.role}</td>
               <td className="py-3 px-6 text-center">
-                <button className="bg-red-500 text-white px-2 py-1 rounded" onClick={() => deleteCustomUser(customUser.id)}>Delete</button>
+                <button className="bg-red-500 text-white  px-2 py-1 rounded" onClick={() => deleteCustomUser(customUser.id)}>Delete</button>
                 <button className="ml-2 bg-green-500 text-white px-2 py-1 rounded" onClick={() => updateCustomUser(customUser.id, { ...customUser })}>Edit</button>
               </td>
             </tr>
@@ -112,7 +112,7 @@ const CustomUser = () => {
         </tbody>
       </table>
 
-      <h2 className="text-2xl font-bold mt-8 mb-4">Add Custom User</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-4 text-center">Add Custom User</h2>
       <form onSubmit={(e) => { e.preventDefault(); createNewCustomUser(newCustomUserData); }} className="space-y-4">
         <input
           type="text"
@@ -120,7 +120,7 @@ const CustomUser = () => {
           placeholder="Username"
           value={newCustomUserData.username}
           onChange={(e) => setNewCustomUserData({ ...newCustomUserData, username: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 rounded"
+          className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         />
         <input
           type="email"
@@ -128,7 +128,7 @@ const CustomUser = () => {
           placeholder="Email"
           value={newCustomUserData.email}
           onChange={(e) => setNewCustomUserData({ ...newCustomUserData, email: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 rounded"
+          className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         />
                 <input
           type="password"
@@ -136,7 +136,7 @@ const CustomUser = () => {
           placeholder="Password"
           value={newCustomUserData.password}
           onChange={(e) => setNewCustomUserData({...newCustomUserData, password: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 rounded"
+          className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         />
         <input
           type="text"
@@ -146,7 +146,7 @@ const CustomUser = () => {
           onChange={(e) => setNewCustomUserData({...newCustomUserData, role: e.target.value })}
           className="w-full px-3 py-2 border border-gray-300 rounded"
         />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded ">Add</button>
+        <button type="submit"  className="relative inline-flex items-center justify-center p-0.5 overflow-hidden focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-lg px-8 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900 align-center m-5">Add</button>
       </form>
     </div>
     
