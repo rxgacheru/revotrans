@@ -72,7 +72,6 @@ const AdminDashboard = () => {
         </div>
       </nav>
       <div className="">
-        <DigitalClock />
       </div>
     </div>
   );
